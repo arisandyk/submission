@@ -1,0 +1,152 @@
+openapi: 3.0.3
+info:
+  title: Backend Submission
+  version: 1.0.0
+  contact: {}
+servers:
+- url: http://localhost:5000
+paths:
+  /auth/login:
+    post:
+      tags:
+      - Auth
+      summary: Login
+      description: Login
+      operationId: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                msisdn:
+                  type: string
+                  example: 62halo
+                password:
+                  type: string
+                  example: password
+            example:
+              msisdn: 62halo
+              password: password
+      responses:
+        '200':
+          description: ''
+  /auth/register:
+    post:
+      tags:
+      - Auth
+      summary: Register
+      description: Register
+      operationId: register
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                msisdn:
+                  type: string
+                  example: tes
+                name:
+                  type: string
+                  example: tes
+                password:
+                  type: string
+                  example: tes
+                username:
+                  type: string
+                  example: tes
+            example:
+              msisdn: tes
+              name: tes
+              password: tes
+              username: tes
+      responses:
+        '200':
+          description: ''
+  /auth/me:
+    get:
+      tags:
+      - Auth
+      summary: Current User
+      description: Current User
+      operationId: currentUser
+      responses:
+        '200':
+          description: ''
+  /logistic:
+    post:
+      tags:
+      - Logistic
+      summary: Create Logistic
+      description: Create Logistic
+      operationId: createLogistic
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: number
+                  example: 10
+                destination_name:
+                  type: string
+                  example: City B
+                duration:
+                  type: string
+                  example: 2 days
+                logistic_name:
+                  type: string
+                  example: Service
+                origin_name:
+                  type: string
+                  example: City A
+            example:
+              amount: 10
+              destination_name: City B
+              duration: 2 days
+              logistic_name: Service
+              origin_name: City A
+      responses:
+        '200':
+          description: ''
+  /logistic/all:
+    get:
+      tags:
+      - Logistic
+      summary: Get All Logistics
+      description: Get All Logistics
+      operationId: getAllLogistics
+      responses:
+        '200':
+          description: ''
+  /logistic/find:
+    post:
+      tags:
+      - Logistic
+      summary: Get Current Logistic
+      description: Get Current Logistic
+      operationId: getCurrentLogistic
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                destination_name:
+                  type: string
+                  example: City B
+                origin_name:
+                  type: string
+                  example: City A
+            example:
+              destination_name: City B
+              origin_name: City A
+      responses:
+        '200':
+          description: ''
+tags:
+- name: Auth
+- name: Logistic
+
